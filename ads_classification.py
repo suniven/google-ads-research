@@ -33,7 +33,7 @@ def my_classify_text(client, text_content):
 if __name__ == '__main__':
     credentials = service_account.Credentials.from_service_account_file('./key/numeric-haven-254117-83c7437851af.json')
     client = language_v1.LanguageServiceClient(credentials=credentials)
-    df = pd.read_csv('text.csv')
+    df = pd.read_csv('domain_html.csv')
     df = df.reindex(columns=df.columns.to_list() + ['results'])
     for i in range(len(df)):
         print("Processing {0} :".format(df.loc[i, 'domain']))

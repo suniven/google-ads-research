@@ -34,10 +34,11 @@ def visit(browser, url):
             f.write("Failed to visit: " + url + '\n')
         return None
     try:
-        # text
-        bs = BeautifulSoup(browser.page_source, "lxml")
-        text = bs.get_text()
-        return text
+        # # text
+        # bs = BeautifulSoup(browser.page_source, "lxml")
+        # text = bs.get_text()
+        # return text
+        return browser.page_source
     except Exception as error:
         with open('./log.txt', 'a', encoding="utf-8") as f:
             f.write("Failed to get text: " + url + '\n')
@@ -69,7 +70,7 @@ def main():
             except Exception as error:
                 print(error)
             finally:
-                df.to_csv('./domain_text.csv', index=False)
+                df.to_csv('./domain_html.csv', index=False)
     except Exception as error:
         print(error)
     finally:
